@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #030712;
+    color: #f8fafc;
+    overflow: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(3, 7, 18, 0.6);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.2);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(6, 182, 212, 0.6);
+  }
+}
+
+/* Cyber-GIS / Palantir Sentinel Glass Panels */
+.sentinel-glass {
+  background: rgba(6, 11, 24, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+.sentinel-glass-cyan {
+  background: rgba(6, 15, 30, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.65), 0 0 20px 0 rgba(6, 182, 212, 0.08);
+}
+
+.sentinel-glass-card {
+  background: rgba(10, 18, 38, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sentinel-glass-card:hover {
+  background: rgba(15, 26, 52, 0.85);
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(6, 182, 212, 0.1);
+}
+
+/* Tactical HUD Grid Overlay */
+.tactical-grid-bg {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+.radar-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.radar-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+  animation: sweep 4s linear infinite;
+}
+
+@keyframes sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.2; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Crisp MapLibre and Leaflet Popups */
+.maplibregl-popup-content {
+  background: rgba(5, 10, 22, 0.95) !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(6, 182, 212, 0.4) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(6, 182, 212, 0.15) !important;
+  padding: 12px !important;
+  backdrop-filter: blur(16px) !important;
+}
+.maplibregl-popup-anchor-top .maplibregl-popup-tip {
+  border-bottom-color: rgba(6, 182, 212, 0.4) !important;
+}
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+  border-top-color: rgba(6, 182, 212, 0.4) !important;
+}
+
+.leaflet-container {
+  background: #030712 !important;
+  background-color: #030712 !important;
+}
+
+.leaflet-tile {
+  background-color: #030712 !important;
+}
+
+.leaflet-tile-pane {
+  background-color: #030712 !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(5, 10, 22, 0.95) !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(6, 182, 212, 0.4) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(6, 182, 212, 0.15) !important;
+  padding: 0 !important;
+  backdrop-filter: blur(16px) !important;
+}
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+.leaflet-popup-tip {
+  background: rgba(5, 10, 22, 0.95) !important;
+  border: 1px solid rgba(6, 182, 212, 0.4) !important;
+}
+
+/* Custom Range Input Styling */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: #1e293b;
+  border-radius: 2px;
+  border: none;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: #06b6d4;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.8);
+  border: 2px solid #ffffff;
+  transition: transform 0.1s ease;
+}
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Leaflet Full Viewport & High Performance Rendering */
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #030712 !important;
+}
+
+.leaflet-tile {
+  visibility: inherit !important;
+}
+
+.leaflet-tile-pane {
+  z-index: 200 !important;
+}
+
+.leaflet-overlay-pane {
+  z-index: 400 !important;
+}
+
+.leaflet-marker-pane {
+  z-index: 600 !important;
+}
+
+.custom-video-pin {
+  pointer-events: auto;
+}
+
+.custom-center-marker {
+  pointer-events: none;
+}
+
+/* Smooth Virtualized Scrolling */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+

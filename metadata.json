@@ -1,0 +1,6 @@
+{
+  "name": "GeoFind 3D - OSINT YouTube Geospatial Intelligence",
+  "description": "Elite OSINT 3D/2D geospatial intelligence web application for discovering, scraping, and visualizing geotagged YouTube videos worldwide with radius filtering, bounding box scanning, geocoding, export tools, and an interactive 3D Solar System exploration engine with Arabic scientific telemetry.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
